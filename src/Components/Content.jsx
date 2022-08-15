@@ -40,7 +40,7 @@ const Content = () => {
             if(data !== null){
                 
               // console.log(Object.values(data))
-               Object.values(data).map(todo=>{
+               Object.values(data).forEach(todo=>{
                 // console.log(todo.userName);
                 // console.log(userName);
                 // if(todo.userName === userName)
