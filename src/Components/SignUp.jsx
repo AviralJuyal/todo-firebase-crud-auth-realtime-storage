@@ -7,7 +7,7 @@ import {  useNavigate,Link } from 'react-router-dom';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [wrong, setWrong] = useState(false);
+    const [wrong, setWrong] = useState(false);
 
     const navigate = useNavigate()
 
@@ -20,8 +20,9 @@ const SignUp = () => {
             
         })
         .catch((error) => {
-        //   setWrong(true);
+          setWrong(true);
           console.log(error);
+          alert(error)
         });
     }
 
@@ -41,7 +42,7 @@ const SignUp = () => {
         <span>Already have a account  <Link to='/'>Click here !!</Link></span> */}
 
 <section class="md:mt-24 max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Log In</h2>
+        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Create Account</h2>
         
         <form>
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -61,6 +62,9 @@ const SignUp = () => {
             <div class="flex justify-end mt-6">
                 <button onClick={(e)=>{handleLogin(e)}} class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Create Account</button>
             </div>
+            {wrong &&
+                <span className="text-red-600"  >Invalid Email/Password</span> 
+            }
         </form>
         <span>Already have a account <Link to='/' className=' underline hover:decoration-blue-500'>Click here !!</Link></span>
 
