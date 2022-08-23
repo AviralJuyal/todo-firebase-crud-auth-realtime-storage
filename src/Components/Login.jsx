@@ -3,7 +3,8 @@ import { auth } from '../firebase'
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {  useNavigate ,Link} from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [wrong, setWrong] = useState(false);
@@ -12,10 +13,11 @@ const Login = () => {
 
     const handleLogin = (e)=>{
         e.preventDefault();
+        
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);
-
+            // console.log(userCredential);
+            props.setcurrentUser(true)
           navigate('/home');
             
         })
@@ -37,40 +39,33 @@ const Login = () => {
     }
 
   return (
-    <>  
-    {/* <div className=''>
-
-        <input className='' type="email" value={email} onChange={(e)=>{handleEmail(e)}} placeholder='Enter Your Email'/>
-        <input type="text" value={password} onChange={(e)=>{handlePassword(e)}} placeholder='Enter Your Password'/> <br />
-        <button onClick={handleLogin}>Login</button><br />
-        <span>Don't have an account !! <Link to='/signUp'>Click here to create one !!</Link></span>
-    </div> */}
-    
-    <section class="md:mt-24 max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Log In</h2>
+    <>   
+    <section className="md:mt-24 max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+        <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Log In</h2>
         
         <form>
-            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                 <div>
-                    <label class="text-gray-700 dark:text-gray-200" for="emailAddress">Email Address</label>
-                    <input value={email} onChange={(e)=>{handleEmail(e)}} type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                    <label className="text-gray-700 dark:text-gray-200" >Email Address</label>
+                    <input value={email} onChange={(e)=>{handleEmail(e)}} type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                 </div>
 
                 <div>
-                    <label class="text-gray-700 dark:text-gray-200" for="password">Password</label>
-                    <input  value={password} onChange={(e)=>{handlePassword(e)}}   type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                    <label className="text-gray-700 dark:text-gray-200" >Password</label>
+                    <input  value={password} onChange={(e)=>{handlePassword(e)}}   type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                 </div>
 
             </div>
 
-            <div class="flex justify-end mt-6">
-                <button onClick={(e)=>{handleLogin(e)}} class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Login</button>
+            <div className="flex justify-end mt-6">
+                <button onClick={(e)=>{handleLogin(e)}} className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Login</button>
             </div>
             {wrong &&
-                <span className="text-red-600"  >Invalid Email/Password</span> 
+                <span className="text-red-600">Invalid Email/Password</span> 
             }
         </form>
-        <span>Don't have an account !! <Link to='/signUp' className=' underline hover:decoration-blue-500'>Click here to create one !!</Link></span>
+        <span>Don't have an account !! <Link to='/signUp' className=' underline hover:decoration-blue-500'>Click here to create one !!</Link></span> <br />
+        <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" onClick={()=>navigate('/phoneLogin')}>Sign up with phone number</button>
 
     </section>
         
