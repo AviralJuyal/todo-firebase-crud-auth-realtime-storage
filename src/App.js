@@ -18,7 +18,6 @@ const RequireAuth =({children})=>{
  return currentUser? children:<Navigate to='/'/>
 }
 
-  console.log(process.env.REACT_APP__SECRET_NAME)
   return(
   <>
     <BrowserRouter>
