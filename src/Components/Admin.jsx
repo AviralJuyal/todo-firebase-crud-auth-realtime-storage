@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { onAuthStateChanged, signOut, updateProfile, getAdditionalUserInfo, getAuth  } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { app, auth, db } from '../firebase';
-import { DataSnapshot, limitToFirst, onValue, orderByChild, orderByValue, query, ref, startAt } from 'firebase/database';
+import {  auth, db } from '../firebase';
+import {  onValue, query, ref } from 'firebase/database';
 
 
 
 const Admin = () => {
     const navigate = useNavigate();
-    const [user, setuser] = useState('')
+    // const [user, setuser] = useState('')
     const [todos, setTodos] = useState([]);
    
   
@@ -31,7 +31,7 @@ const Admin = () => {
           if(data !== null){                
             // console.log(Object.values(data))
              Object.values(data).forEach(todo=>{
-              // console.log(todo.userName);
+              // console.log(todo.userName); 
               // console.log(userName);
               // if(todo.userName === userName)
               setTodos( oldArray =>[...oldArray , todo]);
@@ -41,7 +41,7 @@ const Admin = () => {
         });
 
         const unsubscribe = onAuthStateChanged(auth , (data)=>{
-            setuser(data);
+            // setuser(data);
             // updateProfile(user, {displayName: 'admin'})
           })
         return () => {
