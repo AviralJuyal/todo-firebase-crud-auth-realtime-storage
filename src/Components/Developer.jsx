@@ -8,7 +8,7 @@ const Developer = () => {
 
     const handleLogout = ()=>{
         signOut(auth)
-        navigate('/')
+        navigate('/') 
       }
       
 

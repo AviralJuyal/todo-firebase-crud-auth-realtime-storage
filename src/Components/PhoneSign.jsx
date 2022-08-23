@@ -41,7 +41,7 @@ const PhoneSign = (props) => {
 
     }
     const handleOtp =(e)=>{
-        setOtp(e.target.value);
+        setOtp(e.target.value); 
     }
 
     const verifyOtp =async(e)=>{

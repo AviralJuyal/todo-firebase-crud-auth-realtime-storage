@@ -30,7 +30,7 @@ const ViewImg = (props) => {
     // const delRef = ref(storage , `image-${props.userId}/`)
     const handleDelete = (url)=>{
         // console.log(i)
-        const delRef = ref(storage , url)
+        const delRef = ref(storage , url) 
         console.log(delRef)
         deleteObject(delRef).then(()=>{
             setImageList(imageList.filter((image) => image !== url))

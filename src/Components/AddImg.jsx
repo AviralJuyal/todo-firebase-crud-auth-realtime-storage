@@ -69,7 +69,7 @@ const AddImg = (props) => {
       const file = e.target.files;
       setImg (file);
       setImgPreview([])
-      for(let i=0;i<file.length;i++){
+      for(let i=0;i<file.length;i++){ 
         const urlImgPrev = URL.createObjectURL(file[i]);
         console.log(urlImgPrev)
         setImgPreview(r =>[...r , urlImgPrev])

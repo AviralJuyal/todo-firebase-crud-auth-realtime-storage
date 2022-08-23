@@ -154,7 +154,7 @@ const Content = () => {
       }
       // console.log(user)
       
-        return (
+        return ( 
           <>
           { addingName  ? (
             <form onSubmit={(e)=> handleUserName(e)}>

@@ -1,7 +1,6 @@
-import { async } from '@firebase/util';
 import { updateProfile } from 'firebase/auth';
-import { uploadBytes , getStorage,ref, listAll, getDownloadURL, list } from 'firebase/storage';
-import React ,{useEffect, useState} from 'react'
+import { uploadBytes , getStorage,ref, listAll, getDownloadURL } from 'firebase/storage';
+import React ,{ useState} from 'react'
 import { app } from '../firebase';
 import LoadingSpin from './LoadingSpin';
 
@@ -13,7 +12,7 @@ const Profile = (props) => {
     const [dpUpload, setDpUpload] = useState('')
     const [loading, setloading] = useState(false)
     const [dpChange, setDpChange] = useState(true)
-    const[file , setFile] = useState('')
+    // const[file , setFile] = useState('')
 
     
 
@@ -43,7 +42,7 @@ const Profile = (props) => {
     //     setloading(true);
     //     // console.log(img)
     //     // for(let i =0 ; i<img.length ; i++){
-    //         console.log(props.userId)
+    //         console.log(props.userId) 
     //         console.log(file)
           
     //     // }

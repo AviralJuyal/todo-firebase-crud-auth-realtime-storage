@@ -18,12 +18,12 @@ const RequireAuth =({children})=>{
  return currentUser? children:<Navigate to='/'/>
 }
 
-
+  console.log(process.env.REACT_APP__SECRET_NAME)
   return(
   <>
     <BrowserRouter>
       <Routes>
-        
+
         <Route path="/home" element={<RequireAuth> <Content/> </RequireAuth>} />
         <Route path="/img" element={<RequireAuth><AddImg/></RequireAuth>} />
         <Route path="/" element={<Login setcurrentUser={setcurrentUser}/>} />
